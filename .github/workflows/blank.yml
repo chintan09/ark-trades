@@ -6,7 +6,7 @@ name: CI
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '15 15 * * *'
+    - cron:  '15 16 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,7 +16,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.1
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,13 +26,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Get ARK Trades
         run: | 
-          wget https://www.ark-funds.com/auto/trades/ARK_ARKK_Trades.xls ,
-          wget https://www.ark-funds.com/auto/trades/ARK_ARKW_Trades.xls , 
-          wget https://www.ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls , 
-          wget https://www.ark-funds.com/auto/trades/ARK_ARKG_Trades.xls , 
-          wget https://www.ark-funds.com/auto/trades/ARK_ARKF_Trades.xls ,
-          wget https://www.ark-funds.com/auto/trades/ARK_PRNT_Trades.xls , 
-          wget https://www.ark-funds.com/auto/trades/ARK_IZRL_Trades.xls . 
- 
+          if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKK_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKK_Trades.xls; fi , 
+          if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKW_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKW_Trades.xls; fi , 
+          if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls; fi , 
+          if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKG_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKG_Trades.xls; fi , 
+          if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKF_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKF_Trades.xls; fi . 
           
 
