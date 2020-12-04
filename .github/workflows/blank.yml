@@ -26,10 +26,16 @@ jobs:
       # Runs a single command using the runners shell
       - name: Get ARK Trades
         run: | 
+          pwd
           if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKK_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKK_Trades.xls; fi  
           if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKW_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKW_Trades.xls; fi  
           if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKQ_Trades.xls; fi  
           if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKG_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKG_Trades.xls; fi  
           if [[ `wget -S --spider https://www.ark-funds.com/auto/trades/ARK_ARKF_Trades.xls   2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then wget https://www.ark-funds.com/auto/trades/ARK_ARKF_Trades.xls; fi  
           
+      - name: Archive files
+        uses: actions/upload-artifact@v2
+        with:
+          name: upload files
+          path: `pwd`/*
 
