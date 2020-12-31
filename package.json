@@ -1,0 +1,22 @@
+{
+  "name": "ark-trades",
+  "version": "1.0.0",
+  "description": "Store ARK Trades",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chintan09/ark-trades.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chintan09/ark-trades/issues"
+  },
+  "homepage": "https://github.com/chintan09/ark-trades#readme",
+  "dependencies": {
+    "convert-excel-to-json": "^1.7.0"
+  }
+}
