@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
-      - run: npm install convert-excel-to-json
+      - run: npm install -g convert-excel-to-json
       - run: convert-excel-to-json --help
 
       # Runs a single command using the runners shell
